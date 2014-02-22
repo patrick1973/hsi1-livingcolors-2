@@ -118,9 +118,9 @@ boolean toggleButton (int buttonPinNumber )
 {
   static boolean buttonState = HIGH;
   static boolean buttonStatePrevious =LOW;
-  long time = 0;         // the last time the output pin was toggled
-  long debounce = 200;   // the debounce time, increase if the output flickers
-  boolean button = digitalRead(buttonPinNumber);  // pauze button
+  long time = 0;         
+  long debounce = 200; 
+  boolean button = digitalRead(buttonPinNumber); 
   if (button==HIGH && buttonStatePrevious == LOW && millis() - time > debounce)
   {
     if(buttonState==HIGH)
