@@ -8,21 +8,25 @@
 
 RGBcolor color;    // maak een instantie aan van de struct
 state colorState;  // maak een instantie aan van de Enum
-
+boolean demo;
 void setup()
 {
   Serial.begin(9600);
-  pinMode(BUTTONPIN,INPUT);
+  setupIo();
   colorState=stateSetRedColor;
+  demo=true;
 }
 
 void loop()
 {  
-  if (toggleButton(BUTTONPIN))
+  rgbDemo(demo);
+  if (readPresetButton() == HIGH || readMixColorButton() == HIGH)
   {
-    rgbDemo();
-  }
+    demo = false;  
+  } 
+  presetSelector( pulseCounter( readMixColorButton(),1, 3 ));
 }
+
 
 
 

@@ -5,11 +5,12 @@
 /* definition of constants and types                  */
 /*----------------------------------------------------*/
 
+#include <arduino.h> // this library is needed, A0 is defined in arduino.h. (A0 is not a netive type)
 
 #ifndef TYPES_H   
 #define TYPES_H
 
-#define DEBUG 1
+#define DEBUG 0
 
 typedef enum RGBstate
 {
@@ -29,12 +30,14 @@ typedef struct RGB
   int blue;
 }RGBcolor;
 
+const int POTMETERIN  = A0; // Analog
 const int RGBPINRED   = 9;  //PWM
 const int RGBPINGREEN = 10; //PWM
 const int RGBPINBLUE  = 11; //PWM
 const int LEDPINOUT   = 13; // used for testing the toggle function of the push button
 
-const int BUTTONPIN   = 2;  //Input pin for pauze button
-const int DELAYTIME   = 40;
+const int BUTTONPIN_PRESET = 2;  
+const int BUTTONPIN_MIX    = 3;
+const int DELAYTIME        = 40;
 
 #endif TYPES_H
