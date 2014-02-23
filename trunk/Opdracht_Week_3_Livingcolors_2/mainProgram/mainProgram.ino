@@ -19,7 +19,8 @@ void setup()
 
 
 void loop()
-{  
+{   
+  Serial.println( readPotMeter( POTMETERIN, 0, 255 ));
   rgbDemo(demo);
   if (readPresetButton() == HIGH || readMixColorButton() == HIGH)
   {
