@@ -12,6 +12,10 @@ void setup()
 
 void loop()
 {  
+  rgbDemo();
+}
+void rgbDemo()
+{
   if (toggleButton(BUTTONPIN))
   {
     if (colorState==stateSetRedColor)
@@ -96,6 +100,7 @@ void loop()
       }
     }
   } 
+  
 }
 void writeAnalogOutputs( RGBcolor *c) // *c is een verwijzing naar c van het type RGBcolor.
 {
