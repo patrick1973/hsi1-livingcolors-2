@@ -30,6 +30,20 @@ int readPotMeter (int pin)
 }
 /**
 ************************************************************************************************************
+*readPotMeter function with mapping functionality
+*@param int pin
+*@param int minValue
+*@param int maxValue
+*@return a mapped value of the analog pin
+************************************************************************************************************
+*/
+int readPotMeter (int pin , int minValue, int maxValue)
+{
+  return map(analogRead(pin),0, 1023, minValue , maxValue);
+}
+
+/**
+************************************************************************************************************
 *readPresetButton function 
 *@return the debounced boolean value of the button to select the preset color.
 ************************************************************************************************************
