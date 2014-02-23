@@ -2,6 +2,7 @@
 /* aut.     :  Patrick & Nikita                       */
 /* datum    :  20-02-2014                             */
 /* Project  :  Living Colors part 2                   */
+/* definition of constants and types                  */
 /*----------------------------------------------------*/
 
 
