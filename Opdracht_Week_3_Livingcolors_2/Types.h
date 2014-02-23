@@ -5,7 +5,7 @@
 /* definition of constants and types                  */
 /*----------------------------------------------------*/
 
-#include <arduino.h> // this library is needed, A0 is defined in arduino.h. (A0 is not a netive type)
+#include <arduino.h> // this library is needed, A0 is defined in arduino.h. (A0 is not a native type)
 
 #ifndef TYPES_H   
 #define TYPES_H
