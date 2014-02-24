@@ -10,7 +10,7 @@
 #ifndef TYPES_H   
 #define TYPES_H
 
-#define DEBUG 0
+#define DEBUG 1
 
 typedef enum RGBstate
 {
@@ -30,14 +30,23 @@ typedef struct RGB
   int blue;
 }RGBcolor;
 
+typedef struct pulseBut
+{
+  boolean button;
+  int     counter;
+  boolean lastButtonState;
+  int     minValue;
+  int     maxValue;
+}pulseButton;
+
 const int POTMETERIN  = A0; // Analog
 const int RGBPINRED   = 9;  //PWM
 const int RGBPINGREEN = 10; //PWM
 const int RGBPINBLUE  = 11; //PWM
-const int LEDPINOUT   = 13; // used for testing the toggle function of the push button
+const int LEDPINOUT   = 13; // used for testing
 
 const int BUTTONPIN_PRESET = 2;  
-const int BUTTONPIN_MIX    = 3;
+const int BUTTONPIN_MIX    = 4;
 const int DELAYTIME        = 40;
 
 #endif TYPES_H
