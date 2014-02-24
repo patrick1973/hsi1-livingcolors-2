@@ -14,6 +14,7 @@ void rgbDemo(boolean demoMode)
       color.green=255;
       color.blue=255;
       writeAnalogOutputs(&color);
+      delay(DELAYTIME); 
       colorState=stateGoToYellow;
     }
     else if(colorState==stateGoToYellow)
@@ -22,6 +23,7 @@ void rgbDemo(boolean demoMode)
       {
         color.green--;
         writeAnalogOutputs(&color);
+        delay(DELAYTIME); 
       }
       else
       {
@@ -34,6 +36,7 @@ void rgbDemo(boolean demoMode)
       {
         color.red++;
         writeAnalogOutputs(&color);
+        delay(DELAYTIME); 
       }
       else 
       {
@@ -46,6 +49,7 @@ void rgbDemo(boolean demoMode)
       {
         color.blue--;
         writeAnalogOutputs(&color);
+        delay(DELAYTIME); 
       }
       else
       {
@@ -58,6 +62,7 @@ void rgbDemo(boolean demoMode)
       {
         color.green++;
         writeAnalogOutputs(&color);
+        delay(DELAYTIME); 
       }
       else
       {
@@ -70,6 +75,7 @@ void rgbDemo(boolean demoMode)
       {
         color.red--;
         writeAnalogOutputs(&color);
+        delay(DELAYTIME); 
       }
       else
       {
@@ -82,6 +88,7 @@ void rgbDemo(boolean demoMode)
       {
         color.blue++;
         writeAnalogOutputs(&color);
+        delay(DELAYTIME); 
       }
       else
       {

@@ -16,6 +16,11 @@ void setupIo()
 {
   pinMode(BUTTONPIN_PRESET,INPUT);
   pinMode(BUTTONPIN_MIX,INPUT);
+  pinMode(LEDPINOUT,OUTPUT);
+}
+void setLED13( int state )
+{
+  digitalWrite(LEDPINOUT,state);
 }
 /**
 ************************************************************************************************************
@@ -50,7 +55,14 @@ int readPotMeter (int pin , int minValue, int maxValue)
 */
 boolean readPresetButton()
 {
-  return debounceButton(BUTTONPIN_PRESET,50);
+  static boolean buttonStatePrevious = LOW;
+  boolean button = digitalRead(BUTTONPIN_PRESET); 
+  if (button != buttonStatePrevious)
+  {
+    delay(50);
+    buttonStatePrevious = button;
+  }
+  return buttonStatePrevious;
 }
 /**
 ************************************************************************************************************
@@ -60,7 +72,14 @@ boolean readPresetButton()
 */
 boolean readMixColorButton()
 {
-  return debounceButton(BUTTONPIN_MIX,50);
+  static boolean buttonStatePrevious = LOW;
+  boolean button = digitalRead(BUTTONPIN_MIX); 
+  if (button != buttonStatePrevious)
+  {
+    delay(50);
+    buttonStatePrevious = button;
+  }
+  return buttonStatePrevious;
 }
 /**
 ************************************************************************************************************
@@ -82,7 +101,6 @@ void writeAnalogOutputs( RGBcolor *c)
   analogWrite(RGBPINRED,c->red);
   analogWrite(RGBPINGREEN,c->green);
   analogWrite(RGBPINBLUE,c->blue);
-  delay(DELAYTIME); 
 }
 /**
 ***********************************************************************************************************************************************
@@ -136,31 +154,23 @@ boolean debounceButton( int buttonPinNumber, int delayTime )
 /**
 ***********************************************************************************************************************************************
 * This function is used to count the amount of times that the "button" gets high.\n
-* The button parameter use a rising edge mechnism.\n
-* minCount and MaxCounter are the limit values. When maxCounter is reached than de internal counter goed back to the value of minCounter.\n
-*@param boolean button
-*@param int minCounter
-*@param int maxCounter
-*@return a number of key presses
+* COMMENT IS UNDER CONSTRUCTION. COMPLETE FUNCTION HAS CHANGED!!!!!!
 ***********************************************************************************************************************************************
 */
-int pulseCounter ( boolean button ,int minCounter, int maxCounter )
+void pulseCounter ( pulseButton *pb )
 {
-  static boolean buttonState = HIGH;
-  static int counter;
-  if ( button != buttonState )
+  if ( pb->button != pb->lastButtonState )
   {
     delay(DELAYTIME);
-    if ( button == HIGH )
+    if ( pb->button == HIGH )
     {
-      counter++;
-      if (counter > maxCounter)
+      pb->counter++;
+      if (pb->counter > pb->maxValue)
       {
-        counter = minCounter;
+        pb->counter = pb->minValue;
       }
     }
-   }
-  buttonState = button;
-  return counter;
   }
+  pb->lastButtonState = pb->button;
+}
 
