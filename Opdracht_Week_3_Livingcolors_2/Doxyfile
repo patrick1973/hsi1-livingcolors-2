@@ -38,7 +38,7 @@ PROJECT_NAME           = "Living Colors 2"
 # could be handy for archiving the generated documentation or if some version
 # control system is used.
 
-PROJECT_NUMBER         = "Version 0.0"
+PROJECT_NUMBER         = "Version 0.1"
 
 # Using the PROJECT_BRIEF tag one can provide an optional one line description
 # for a project that appears at the top of each page and should give viewer a
@@ -51,14 +51,14 @@ PROJECT_BRIEF          = "authors: Patrick van ieperen & Nikita van Oorschot"
 # and the maximum width should not exceed 200 pixels. Doxygen will copy the logo
 # to the output directory.
 
-PROJECT_LOGO           = "D:/Users/Patrick van Ieperen/Dropbox/Fontys/Opleiding HSI-1/Gezamelijke Opdrachten/Ontwerp_week_3_Livingcolors_2/ProjectLogo.png"
+PROJECT_LOGO           = "C:/Users/patrick.vanieperen/Dropbox/Fontys/Opleiding HSI-1/Gezamelijke Opdrachten/Ontwerp_week_3_Livingcolors_2/ProjectLogo.png"
 
 # The OUTPUT_DIRECTORY tag is used to specify the (relative or absolute) path
 # into which the generated documentation will be written. If a relative path is
 # entered, it will be relative to the location where doxygen was started. If
 # left blank the current directory will be used.
 
-OUTPUT_DIRECTORY       = "D:/Users/Patrick van Ieperen/Dropbox/Fontys/Opleiding HSI-1/Gezamelijke Opdrachten/Ontwerp_week_3_Livingcolors_2"
+OUTPUT_DIRECTORY       = ../Ontwerp_week_3_Livingcolors_2
 
 # If the CREATE_SUBDIRS tag is set to YES, then doxygen will create 4096 sub-
 # directories (in 2 levels) under the output directory of each output format and
@@ -1419,7 +1419,7 @@ DISABLE_INDEX          = NO
 # The default value is: NO.
 # This tag requires that the tag GENERATE_HTML is set to YES.
 
-GENERATE_TREEVIEW      = NO
+GENERATE_TREEVIEW      = YES
 
 # The ENUM_VALUES_PER_LINE tag can be used to set the number of enum values that
 # doxygen will group on one line in the generated HTML documentation.
