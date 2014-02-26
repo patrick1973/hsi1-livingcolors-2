@@ -11,7 +11,8 @@ RGBcolor baseColor, mixColor, presetColor;
  ************************************************************************************************************
  * function presetSelector will be used to select an predefined color.\n
  * UNDER CONSTRUCTION
- *@param int presetValue 
+ *@param int presetValue  this value represents the selected color (1)
+ *@param boolean lock
  ************************************************************************************************************
  */
 void presetSelector ( int presetValue , boolean lock)
