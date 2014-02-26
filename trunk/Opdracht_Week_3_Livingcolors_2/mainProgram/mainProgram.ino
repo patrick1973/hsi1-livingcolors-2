@@ -28,21 +28,17 @@ void loop()
   {
     demo = false; 
   } 
-  
+
   if (readPresetButton() == HIGH)
   {
     pbBaseSelectorBtn.counter = 0;
     lockPreset = false;
   }
-  
+
+  Serial.println ( readMixColorButton());
   if ( readMixColorButton() == HIGH )
   {
-    lockPreset = true;
-    Serial.println( lockPreset );
-    color.red = 255;
-    color.green = 255;
-    color.blue = 255;
-    
+    lockPreset = true;  
   }
   pbPresetBtn.button = readPresetButton();
   pbPresetBtn.minValue = 1;
@@ -50,18 +46,20 @@ void loop()
   pulseCounter(&pbPresetBtn);
   presetSelector(pbPresetBtn.counter, lockPreset);
   
+
   pbBaseSelectorBtn.button = readMixColorButton();
   pbBaseSelectorBtn.minValue = 0;
   pbBaseSelectorBtn.maxValue = 3;
   pulseCounter(&pbBaseSelectorBtn);
   baseColorSelector(pbBaseSelectorBtn.counter);
-  
+
   // for testing purpose only
   if (lockPreset)
     setLED13(HIGH);
   else
     setLED13(LOW);
 }
+
 
 
 

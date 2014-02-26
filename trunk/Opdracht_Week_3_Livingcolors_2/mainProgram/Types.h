@@ -10,7 +10,7 @@
 #ifndef TYPES_H   
 #define TYPES_H
 
-#define DEBUG 1
+#define DEBUG 0
 
 typedef enum RGBstate
 {

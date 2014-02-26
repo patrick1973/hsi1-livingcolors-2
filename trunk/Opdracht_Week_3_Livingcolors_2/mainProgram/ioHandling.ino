@@ -18,6 +18,13 @@ void setupIo()
   pinMode(BUTTONPIN_MIX,INPUT);
   pinMode(LEDPINOUT,OUTPUT);
 }
+/**
+************************************************************************************************************
+*This function is used to switch on or off led number 13\n 
+*used for testing purpose\n
+*@param state this can be HIGH or LOW
+************************************************************************************************************
+*/
 void setLED13( int state )
 {
   digitalWrite(LEDPINOUT,state);
@@ -80,6 +87,7 @@ boolean readMixColorButton()
     buttonStatePrevious = button;
   }
   return buttonStatePrevious;
+
 }
 /**
 ************************************************************************************************************
