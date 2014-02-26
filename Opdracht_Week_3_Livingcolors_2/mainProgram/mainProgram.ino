@@ -9,56 +9,59 @@
 RGBcolor color;    // maak een instantie aan van de struct
 pulseButton pbPresetBtn, pbBaseSelectorBtn;
 state colorState;  // maak een instantie aan van de Enum
-boolean demo;
-boolean lockPreset;
+stateMachine mainState;
+
 void setup()
 {
   Serial.begin(9600);
   setupIo();
-  colorState=stateSetRedColor;
-  demo=true;
-  lockPreset = false;
+  colorState = stateSetRedColor;
+  mainState = stateDemo;
 }
 
 
 void loop()
 {   
-  rgbDemo(demo);
-  if (readPresetButton() == HIGH || readMixColorButton() == HIGH)
+  if (readPresetButton())
   {
-    demo = false; 
-  } 
-
-  if (readPresetButton() == HIGH)
-  {
-    pbBaseSelectorBtn.counter = 0;
-    lockPreset = false;
+    mainState = statePreset;
   }
-
-  Serial.println ( readMixColorButton());
-  if ( readMixColorButton() == HIGH )
+  if ( readMixColorButton())
   {
-    lockPreset = true;  
+    mainState = stateMix;
   }
-  pbPresetBtn.button = readPresetButton();
-  pbPresetBtn.minValue = 1;
-  pbPresetBtn.maxValue = 3;
-  pulseCounter(&pbPresetBtn);
-  presetSelector(pbPresetBtn.counter, lockPreset);
   
+  switch (mainState)
+  {
+  case stateDemo : 
+    rgbDemo(true);
+    break;
+  case statePreset : 
+    //pbBaseSelectorBtn.counter = 0;
+    pbPresetBtn.button = readPresetButton();
+    pbPresetBtn.minValue = 1;
+    pbPresetBtn.maxValue = 3;
+    pulseCounter(&pbPresetBtn);
+    presetSelector(pbPresetBtn.counter);
+    break;
+  case stateMix :
+    pbBaseSelectorBtn.button = readMixColorButton();
+    pbBaseSelectorBtn.minValue = 0;
+    pbBaseSelectorBtn.maxValue = 3;
+    pulseCounter(&pbBaseSelectorBtn);
+    baseColorSelector(pbBaseSelectorBtn.counter); 
+    break;    
+  };
 
-  pbBaseSelectorBtn.button = readMixColorButton();
-  pbBaseSelectorBtn.minValue = 0;
-  pbBaseSelectorBtn.maxValue = 3;
-  pulseCounter(&pbBaseSelectorBtn);
-  baseColorSelector(pbBaseSelectorBtn.counter);
 
-  // for testing purpose only
-  if (lockPreset)
-    setLED13(HIGH);
-  else
-    setLED13(LOW);
+//  // for testing purpose only
+//  if (lockPreset)
+//    setLED13(HIGH);
+//  else
+//    setLED13(LOW);
 }
+
+
 
 
 

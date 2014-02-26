@@ -66,10 +66,14 @@ boolean readPresetButton()
   boolean button = digitalRead(BUTTONPIN_PRESET); 
   if (button != buttonStatePrevious)
   {
-    delay(50);
+    if ( button == HIGH )
+    {
+      delay(50);
+      return true;
+    }
     buttonStatePrevious = button;
-  }
-  return buttonStatePrevious;
+   }
+   return false;
 }
 /**
 ************************************************************************************************************
@@ -83,11 +87,14 @@ boolean readMixColorButton()
   boolean button = digitalRead(BUTTONPIN_MIX); 
   if (button != buttonStatePrevious)
   {
+    if ( button == HIGH )
+    {
     delay(50);
+    return true;
+    }
     buttonStatePrevious = button;
-  }
-  return buttonStatePrevious;
-
+  }  
+  return false;
 }
 /**
 ************************************************************************************************************

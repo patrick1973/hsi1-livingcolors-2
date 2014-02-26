@@ -15,23 +15,22 @@ RGBcolor baseColor, mixColor, presetColor;
  *@param boolean lock
  ************************************************************************************************************
  */
-void presetSelector ( int presetValue , boolean lock)
+void presetSelector ( int presetValue )
 {
-  if (lock == false )
+
+  if ( presetValue == 1 )
   {
-    if ( presetValue == 1 )
-    {
-      setYellow();
-    }
-    else if ( presetValue == 2 )
-    {
-      setCyan();
-    }
-    else if ( presetValue == 3 )
-    {
-      setMagenta();
-    }
+    setYellow();
   }
+  else if ( presetValue == 2 )
+  {
+    setCyan();
+  }
+  else if ( presetValue == 3 )
+  {
+    setMagenta();
+  }
+
 }
 
 void baseColorSelector( int baseColorValue )
@@ -84,7 +83,8 @@ void baseColorSelector( int baseColorValue )
 
 /**
  ************************************************************************************************************
- * function setYellow will be used to set the RGB color to yellow.
+ * function setYellow will be used to set the RGB color to yellow\n
+ * When the preset color button is pressed the yellow color will be displayed
  ************************************************************************************************************
  */
 void setYellow()
@@ -96,7 +96,8 @@ void setYellow()
 }
 /**
  ************************************************************************************************************
- * function setCyan will be used to set the RGB color to Cyan.
+ * function setCyan will be used to set the RGB color to Cyan.\n
+ *When the preset color button is pressed the cyan color will be displayed
  ************************************************************************************************************
  */
 void setCyan()
@@ -108,7 +109,8 @@ void setCyan()
 }
 /**
  ************************************************************************************************************
- * function setMagenta will be used to set the RGB color to Magenta.
+ * function setMagenta will be used to set the RGB color to Magenta.\n
+ *When the preset color button is pressed the magenta color will be displayed
  ************************************************************************************************************
  */
 void setMagenta() 
@@ -119,22 +121,40 @@ void setMagenta()
   writeAnalogOutputs(&presetColor);
 }
 
+/**
+ ************************************************************************************************************
+ * function showBaseRed will be used to show the baseColor Red before mixing.\n
+ * then wait 1 sec 
+ ************************************************************************************************************
+ */
 void showBaseRed()
 {
-  presetColor.red = 0;
-  presetColor.green = 255;
-  presetColor.blue = 255;
-  writeAnalogOutputs(&presetColor);
+  baseColor.red = 0;
+  baseColor.green = 255;
+  baseColor.blue = 255;
+  writeAnalogOutputs(&baseColor);
   delay(1000);
 }
+/**
+ ************************************************************************************************************
+ * function showBaseGreen will be used to show the baseColor Green before mixing.\n
+ * then wait 1 sec 
+ ************************************************************************************************************
+ */
 void showBaseGreen()
 {
-  presetColor.red = 255;
-  presetColor.green = 0;
-  presetColor.blue = 255;
-  writeAnalogOutputs(&presetColor);
+  baseColor.red = 255;
+  baseColor.green = 0;
+  baseColor.blue = 255;
+  writeAnalogOutputs(&baseColor);
   delay(1000);
 }
+/**
+ ************************************************************************************************************
+ * function showBaseBlue will be used to show the baseColor Blue before mixing.\n
+ * then wait 1 sec 
+ ************************************************************************************************************
+ */
 void showBaseBlue()
 {
   baseColor.red = 255;
@@ -143,6 +163,13 @@ void showBaseBlue()
   writeAnalogOutputs(&baseColor);
   delay(1000);
 }
+/**
+ ************************************************************************************************************
+ * function showBaseOff will be used to show the baseColor OFF before mixing.\n
+ * then wait 1 sec 
+ * after the 1 sec the function showMixedColors will be called
+ ************************************************************************************************************
+ */
 void showBaseOff()
 {
   baseColor.red = 255;
@@ -152,10 +179,16 @@ void showBaseOff()
   delay(1000);
   showMixedColors();
 }
+/**
+ ************************************************************************************************************
+ * function showMixedColors will be used to set the RGB color to the mixed color.
+ ************************************************************************************************************
+ */
 void showMixedColors()
 {
   writeAnalogOutputs(&mixColor);  
 }
+
 
 
 
