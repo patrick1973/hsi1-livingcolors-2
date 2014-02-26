@@ -35,6 +35,7 @@ void presetSelector ( int presetValue , boolean lock)
 
 void baseColorSelector( int baseColorValue )
 {
+  //lockPreset = true; 
   static int previous ;                                   // static int for storing the previous selected value
   if ( baseColorValue != 0)                               // if the mixColor loop is not locked (0) is locked
   {
