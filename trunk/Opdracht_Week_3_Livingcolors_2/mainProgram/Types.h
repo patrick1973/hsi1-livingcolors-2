@@ -10,7 +10,13 @@
 #ifndef TYPES_H   
 #define TYPES_H
 
-#define DEBUG 0
+/**
+ ************************************************************************************************************
+ * The macro Debug is used for debugging purpose.\n
+ * When this macro is set to 1 the actual RGB values will be displayed in the serial monitor.
+ ************************************************************************************************************
+ */
+#define DEBUG 1
 
 typedef enum RGBstate
 {
@@ -22,6 +28,13 @@ typedef enum RGBstate
   stateGoToMagenta,
   stateGoToRed
 }state;
+
+typedef enum selectedState
+{
+  stateDemo,
+  statePreset,
+  stateMix
+}stateMachine;
 
 typedef struct RGB
 {
